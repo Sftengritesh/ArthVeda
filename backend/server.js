@@ -29,17 +29,21 @@ app.use(express.urlencoded({ extended: true }));
 // Security Middleware
 app.use(helmet());
 
-// CORS — allow Vite dev server + production
+// CORS — allow Vite dev server + production frontend
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'http://127.0.0.1:5173',
-];
+  process.env.FRONTEND_URL, // Deployed frontend
+].filter(Boolean);
+
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (curl, Postman, mobile apps)
+    // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
+    if (allowedOrigins.includes(origin) || allowedOrigins.some(ao => origin.startsWith(ao))) {
+      return callback(null, true);
+    }
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
