@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 import Card from "../components/Card";
 import Table from "../components/Table";
 
-const COLORS = ["#34d399", "#60a5fa", "#f472b6", "#a78bfa", "#fbbf24", "#f87171", "#38bdf8", "#fb923c"];
+const COLORS = ["#1EE09A", "#38bdf8", "#f472b6", "#a78bfa", "#fbbf24", "#f87171", "#818cf8", "#fb923c"];
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -170,12 +170,12 @@ export default function Dashboard() {
 
   // Theme-aware chart colors
   const isDark = theme === 'dark';
-  const gridColor = isDark ? '#334155' : '#e2e8f0';
-  const axisColor = isDark ? '#94a3b8' : '#64748b';
-  const tooltipBg = isDark ? '#0f172a' : '#ffffff';
-  const tooltipBorder = isDark ? 'none' : '1px solid #e2e8f0';
+  const gridColor = isDark ? '#2f3340' : '#e2e8f0';
+  const axisColor = isDark ? '#9ca3af' : '#64748b';
+  const tooltipBg = isDark ? '#171920' : '#ffffff';
+  const tooltipBorder = isDark ? '1px solid #252833' : '1px solid #e2e8f0';
   const tooltipText = isDark ? '#f8fafc' : '#1e293b';
-  const cursorFill = isDark ? '#1e293b' : '#f1f5f9';
+  const cursorFill = isDark ? '#1c1f26' : '#f1f5f9';
 
   // Custom tooltip for pie chart
   const PieTooltip = ({ active, payload }) => {
@@ -301,7 +301,7 @@ export default function Dashboard() {
                 <XAxis dataKey="name" stroke={axisColor} />
                 <YAxis stroke={axisColor} />
                 <Tooltip cursor={{fill: cursorFill}} contentStyle={{ backgroundColor: tooltipBg, border: tooltipBorder, borderRadius: '8px', color: tooltipText }} />
-                <Bar dataKey="income" fill="#34d399" radius={[4, 4, 0, 0]} name="Income" />
+                <Bar dataKey="income" fill="#1EE09A" radius={[4, 4, 0, 0]} name="Income" />
                 <Bar dataKey="expense" fill="#f87171" radius={[4, 4, 0, 0]} name="Expense" />
               </BarChart>
             </ResponsiveContainer>
@@ -356,8 +356,8 @@ export default function Dashboard() {
             <AreaChart data={trendData}>
               <defs>
                 <linearGradient id="incomeGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#34d399" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#34d399" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#1EE09A" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#1EE09A" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="expenseGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#f87171" stopOpacity={0.3} />
@@ -368,7 +368,7 @@ export default function Dashboard() {
               <XAxis dataKey="name" stroke={axisColor} />
               <YAxis stroke={axisColor} />
               <Tooltip contentStyle={{ backgroundColor: tooltipBg, border: tooltipBorder, borderRadius: '8px', color: tooltipText }} />
-              <Area type="monotone" dataKey="income" stroke="#34d399" fill="url(#incomeGrad)" strokeWidth={2} name="Income" />
+              <Area type="monotone" dataKey="income" stroke="#1EE09A" fill="url(#incomeGrad)" strokeWidth={2} name="Income" />
               <Area type="monotone" dataKey="expense" stroke="#f87171" fill="url(#expenseGrad)" strokeWidth={2} name="Expense" />
             </AreaChart>
           </ResponsiveContainer>

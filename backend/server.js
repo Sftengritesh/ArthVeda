@@ -12,25 +12,41 @@ const { errorHandler } = require('./middleware/errorHandler');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Body Parser — must come BEFORE other middleware that reads body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Security Middleware
 app.use(helmet());
-app.use(cors());
+
+// CORS — allow Vite dev server + production
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:5173',
+];
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (curl, Postman, mobile apps)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
 
 // Rate Limiting
 const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again after 15 minutes'
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: { success: false, message: 'Too many requests, please try again after 15 minutes' },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 app.use('/api/', apiLimiter);
 
 // Logging Middleware
-if (process.env.NODE_ENV !== 'production') {
-  app.use(morgan('dev'));
-}
-
-// Body Parser
-app.use(express.json());
+app.use(morgan('dev'));
 
 // ======================
 // Database Connection

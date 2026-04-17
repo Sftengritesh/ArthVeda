@@ -287,32 +287,7 @@ export default function Add() {
              </div>
           </div>
 
-          <div
-            className="rounded-3xl p-6 shadow-lg space-y-5"
-            style={{
-              backgroundColor: 'var(--bg-card)',
-              border: '1px solid var(--border-primary)',
-            }}
-          >
-             <div className="flex justify-between items-center text-sm">
-                <span style={{ color: 'var(--text-muted)' }}>Policy Check</span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-extrabold tracking-wider" style={{ backgroundColor: 'var(--accent-subtle)', color: 'var(--accent)' }}>COMPLIANT</span>
-             </div>
-             <div className="flex justify-between items-center text-sm">
-                <span style={{ color: 'var(--text-muted)' }}>Tax Rate</span>
-                <span className="font-bold text-xs" style={{ color: 'var(--text-heading)' }}>8.25% (Standard)</span>
-             </div>
-             <div className="flex justify-between items-center text-sm">
-                <span style={{ color: 'var(--text-muted)' }}>Reimbursable</span>
-                <div className="w-8 h-4 rounded-full relative cursor-pointer" style={{ backgroundColor: 'var(--accent)', boxShadow: '0 0 10px rgba(52,211,153,0.3)' }}>
-                  <div className="w-3 h-3 rounded-full absolute right-0.5 top-0.5" style={{ backgroundColor: 'var(--bg-card)' }}></div>
-                </div>
-             </div>
-             <div className="flex justify-between items-center text-sm">
-                <span style={{ color: 'var(--text-muted)' }}>Project Code</span>
-                <span className="font-bold text-[11px] tracking-wider" style={{ color: '#a855f7' }}>#LOGIC-2024-X</span>
-             </div>
-          </div>
+
 
           <div
             className="rounded-3xl p-6 shadow-lg"

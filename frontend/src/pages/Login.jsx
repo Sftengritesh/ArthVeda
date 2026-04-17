@@ -63,19 +63,19 @@ export default function Login() {
     <div className="min-h-screen flex">
 
       {/* Left Panel — Branding */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-[#060a10]">
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-[var(--bg-primary)]">
         {/* Gradient orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#34d399]/8 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#60a5fa]/8 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent)] rounded-full blur-[120px] opacity-10" />
+        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[var(--info)] rounded-full blur-[100px] opacity-10" />
 
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
-          <Link to="/welcome" className="text-2xl font-extrabold text-[#34d399] tracking-tight">
+          <Link to="/welcome" className="text-2xl font-extrabold text-[var(--accent)] tracking-tight">
             ArthVeda
           </Link>
 
           <div className="space-y-6 max-w-md">
             <h2 className="text-4xl font-extrabold text-white leading-tight">
-              Take control of your <span className="text-[#34d399]">finances</span>, one insight at a time.
+              Take control of your <span className="text-[var(--accent)]">finances</span>, one insight at a time.
             </h2>
             <p className="text-gray-500 text-lg leading-relaxed">
               Smart tracking, AI-powered insights, and beautiful analytics — all in one place.
@@ -105,11 +105,11 @@ export default function Login() {
       </div>
 
       {/* Right Panel — Login Form */}
-      <div className="flex-1 flex items-center justify-center px-6 py-12 bg-[#090b10]">
+      <div className="flex-1 flex items-center justify-center px-6 py-12 bg-[var(--bg-secondary)]">
         <div className="w-full max-w-sm">
 
           {/* Mobile logo */}
-          <Link to="/welcome" className="lg:hidden text-2xl font-extrabold text-[#34d399] tracking-tight block mb-12">
+          <Link to="/welcome" className="lg:hidden text-2xl font-extrabold text-[var(--accent)] tracking-tight block mb-12">
             ArthVeda
           </Link>
 
@@ -129,10 +129,10 @@ export default function Login() {
                 value={formData.email}
                 onChange={handleEmailChange}
                 onBlur={handleEmailBlur}
-                className={`w-full bg-transparent border-b pb-3 text-white placeholder:text-gray-700 focus:outline-none transition-colors text-[15px] ${emailError ? 'border-red-500' : 'border-gray-800 focus:border-[#34d399]'}`}
+                className={`w-full bg-transparent border-b pb-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none transition-colors text-[15px] ${emailError ? 'border-[var(--danger)]' : 'border-[var(--border-secondary)] focus:border-[var(--accent)]'}`}
               />
               {emailError && (
-                <p className={`text-xs mt-1 ${emailError.startsWith('Did you mean') ? 'text-yellow-400' : 'text-red-400'}`}>
+                <p className={`text-xs mt-1 ${emailError.startsWith('Did you mean') ? 'text-[var(--warning)]' : 'text-[var(--danger)]'}`}>
                   {emailError}
                 </p>
               )}
@@ -146,14 +146,14 @@ export default function Login() {
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full bg-transparent border-b border-gray-800 pb-3 text-white placeholder:text-gray-700 focus:outline-none focus:border-[#34d399] transition-colors text-[15px]"
+                className="w-full bg-transparent border-b border-[var(--border-secondary)] pb-3 text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] transition-colors text-[15px]"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#34d399] hover:bg-[#2ebc87] text-[#090b10] font-bold py-3 rounded-xl transition-all duration-200 text-sm mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[var(--bg-primary)] font-bold py-3 rounded-xl transition-all duration-200 text-sm mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -169,9 +169,9 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="text-center text-sm text-gray-600 mt-8">
+          <p className="text-center text-sm text-[var(--text-secondary)] mt-8">
             Don't have an account?{' '}
-            <Link to="/signup" className="text-[#34d399] hover:text-[#2ebc87] font-medium transition-colors">
+            <Link to="/signup" className="text-[var(--accent)] hover:text-[var(--accent-hover)] font-medium transition-colors">
               Create one
             </Link>
           </p>

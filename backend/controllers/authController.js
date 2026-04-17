@@ -22,6 +22,23 @@ exports.register = async (req, res, next) => {
     const { name, password } = req.body;
     const email = req.body.email?.toLowerCase().trim();
 
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({ success: false, message: 'A proper email is required' });
+    }
+
+    const domain = email.split('@')[1];
+
+    // Deep Validation: DNS & MX checking on domain
+    try {
+      const dns = require('dns').promises;
+      const mxRecords = await dns.resolveMx(domain);
+      if (!mxRecords || mxRecords.length === 0) {
+        return res.status(400).json({ success: false, message: 'Email domain cannot receive mail (No MX records)' });
+      }
+    } catch (dnsErr) {
+      return res.status(400).json({ success: false, message: 'Invalid email domain (Verification failed)' });
+    }
+
     // Check if user exists
     const userExists = await User.findOne({ email });
     if (userExists) {

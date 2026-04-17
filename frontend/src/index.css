@@ -6,43 +6,43 @@
 
 /* ── DARK THEME (default) ── */
 :root, :root.dark {
-  --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-card: #111827;
-  --bg-card-hover: #1a2332;
-  --bg-surface: #0d1117;
-  --bg-surface-raised: #161b22;
-  --bg-input: #0d1117;
-  --bg-sidebar: #000000;
-  --bg-topbar: #111111;
+  --bg-primary: #0a0b0f;
+  --bg-secondary: #0c0e12;
+  --bg-card: #171920;
+  --bg-card-hover: #1c1f26;
+  --bg-surface: #171920;
+  --bg-surface-raised: #1c1f26;
+  --bg-input: #0f1115;
+  --bg-sidebar: #0a0b0f;
+  --bg-topbar: #0a0b0f;
 
-  --border-primary: #1f2937;
-  --border-secondary: #374151;
-  --border-subtle: #1a1a2e;
-  --border-input: #374151;
+  --border-primary: #252833;
+  --border-secondary: #2f3340;
+  --border-subtle: #1c1e26;
+  --border-input: #252833;
 
-  --text-primary: #f0f6fc;
-  --text-secondary: #8b949e;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
   --text-muted: #6b7280;
   --text-heading: #ffffff;
-  --text-inverse: #0a0a0a;
-  --text-link: #34d399;
+  --text-inverse: #0a0b0f;
+  --text-link: #1EE09A;
 
-  --accent: #34d399;
-  --accent-subtle: rgba(52, 211, 153, 0.1);
-  --accent-hover: #2ebc87;
+  --accent: #1EE09A;
+  --accent-subtle: rgba(30, 224, 154, 0.1);
+  --accent-hover: #17cf8c;
 
   --danger: #f87171;
   --danger-subtle: rgba(248, 113, 113, 0.1);
-  --success: #34d399;
-  --success-subtle: rgba(52, 211, 153, 0.1);
+  --success: #1EE09A;
+  --success-subtle: rgba(30, 224, 154, 0.1);
   --warning: #fbbf24;
   --warning-subtle: rgba(251, 191, 36, 0.1);
-  --info: #60a5fa;
-  --info-subtle: rgba(96, 165, 250, 0.1);
+  --info: #38bdf8;
+  --info-subtle: rgba(56, 189, 248, 0.1);
 
-  --shadow-card: 0 0 20px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 0 20px rgba(52, 211, 153, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 4px 20px rgba(30, 224, 154, 0.08);
 
   --color-scheme: dark;
 }
@@ -127,5 +127,5 @@ html, body {
 
 /* Date input styling */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: var(--color-scheme) == light ? none : invert(1);
+  filter: invert(1);
 }
