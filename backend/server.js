@@ -12,6 +12,16 @@ const { errorHandler } = require('./middleware/errorHandler');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Validate essential environment variables
+const requiredEnv = ['MONGO_URI', 'JWT_SECRET'];
+requiredEnv.forEach(envVar => {
+  if (!process.env[envVar]) {
+    console.error(`🚨 CRITICAL ERROR: Environment variable ${envVar} is missing!`);
+    console.error(`Please add it to your environment variables (Render Dashboard -> Environment).`);
+    process.exit(1);
+  }
+});
+
 // Body Parser — must come BEFORE other middleware that reads body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
